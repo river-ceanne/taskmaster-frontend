@@ -12,7 +12,7 @@ export default class Tasks extends React.Component {
 
   setTasks = async event => {
     let tasksData = await superagent.get(
-      `${process.env.BACKEND_URL}`
+      `http://taskmaster-env.csiiybveap.us-east-1.elasticbeanstalk.com/`
     );
 
     console.log('--- TASK DATA --- ' + tasksData);
