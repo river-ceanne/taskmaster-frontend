@@ -1,7 +1,7 @@
 import React from 'react';
 import superagent from 'superagent';
 
-class TaskForm extends React.Component {
+export default class TaskForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,11 +18,9 @@ class TaskForm extends React.Component {
     e.preventDefault();
     let query = this.state.search_query;
 
-    let locationData = await superagent.get(`${}/location`).query({ data : query });
-    let weatherData = await superagent.get(`${__API_URL__}/weather`).query({data : locationData.body});
+    let weatherData = await superagent.get(`${process.env.BACKEND_URL}/weather`).query({data : locationData.body});
     let yelpData = await superagent.get(`${__API_URL__}/yelp`).query({data : locationData.body});
-
-    console.log(weatherData);
+;
 
     let apiResults = {
       location: locationData.body,
@@ -45,5 +43,3 @@ class TaskForm extends React.Component {
     );
   }
 }
-
-export default TaskForm;

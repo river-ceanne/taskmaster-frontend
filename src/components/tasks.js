@@ -1,7 +1,7 @@
 import React from 'react';
 import superagent from 'superagent';
 
-export default class UserTasks extends React.Component {
+export default class Tasks extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,8 +23,8 @@ export default class UserTasks extends React.Component {
 
   render() {
     return (
-      <section id='usertasks' className='usertasks-container'>
-        <ul id='usertaskslist'>
+      <section id='alltasks' className='alltasks-container'>
+        <ul id='alltaskslist'>
           <h2>Tasks</h2>
           {this.state.tasks.map((val, idx) => {
             // let publishedAt = new Date(val.publishedAt).toDateString();
