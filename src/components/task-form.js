@@ -18,20 +18,10 @@ export default class TaskForm extends React.Component {
     e.preventDefault();
     let query = this.state.search_query;
 
-    let weatherData = await superagent.get(`${process.env.BACKEND_URL}/weather`).query({data : locationData.body});
-    let yelpData = await superagent.get(`${__API_URL__}/yelp`).query({data : locationData.body});
+    // let weatherData = await superagent.get(`${process.env.BACKEND_URL}/weather`).query({data : locationData.body});
+    // let yelpData = await superagent.get(`${__API_URL__}/yelp`).query({data : locationData.body});
 ;
 
-    let apiResults = {
-      location: locationData.body,
-      weather: weatherData.body,
-      yelp: yelpData.body,
-      events: eventsData.body,
-      movies: moviesData.body
-    }
-
-    console.log('API RESULTS : ',apiResults);
-    this.props.callback(apiResults);
   };
 
   render() {
