@@ -14,11 +14,19 @@ export default class Tasks extends React.Component {
   }
 
   setTasks = async () => {
-    let tasksData = await superagent.get(
-      `${this.props.backend}`
-    ) 
-    .withCredentials()
-    .catch(err => console.log('Error on get is: ', err));
+    let tasksData = await 
+    fetch(this.props.backend, {
+      mode:'cors',
+      method: 'GET'
+    })
+    // .then( data => data.json() )
+    // .then( ppl => setPeople(ppl) )
+    .catch( console.error );
+    // superagent.get(
+    //   `${this.props.backend}`
+    // ) 
+    // .withCredentials()
+    // .catch(err => console.log('Error on get is: ', err));
     if (tasksData !== undefined) {
       this.setState({ tasks: tasksData.body });
       console.log('--- TASK DATA --- ' + tasksData);
