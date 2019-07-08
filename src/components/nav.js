@@ -29,7 +29,7 @@ export default class Nav extends React.Component {
     
       navArr.push(
         <li key={2}>
-          <a href={'/addtask'}>Create New Task</a>
+          <a href={'./addtask'}>Create New Task</a>
         </li>
       );
     
@@ -39,7 +39,7 @@ export default class Nav extends React.Component {
         <input onChange={this.handleSearchKeyword} />
         <input type="submit" />
         </form>
-        <a href={'/user'}>Search Task of User</a>
+        <a href={'./user'}>Search Task of User</a>
       </li>
     );
 
