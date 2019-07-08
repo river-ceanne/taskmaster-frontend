@@ -5,19 +5,7 @@ import TaskForm from './task-form.js';
 import UserTasks from './usertasks.js';
 
 export default class Nav extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      search_query: '',
-    };
-  }
-
-  handleSearchKeyword = e => {
-    let search_query = e.target.value;
-    this.setState({ search_query });
-  };
-
-
+  
   render() {
     let navArr = [];
 
@@ -29,7 +17,7 @@ export default class Nav extends React.Component {
     
       navArr.push(
         <li key={2}>
-          <a href={'./addtask'}>Create New Task</a>
+          <a href={'/addtask'}>Create New Task</a>
         </li>
       );
     
@@ -37,9 +25,8 @@ export default class Nav extends React.Component {
       <li key={3}>
         <form onSubmit={this.handleSubmit}>
         <input onChange={this.handleSearchKeyword} />
-        <input type="submit" />
+        <input type="submit" value="Search Task of User"/>
         </form>
-        <a href={'./user'}>Search Task of User</a>
       </li>
     );
 
@@ -50,7 +37,7 @@ export default class Nav extends React.Component {
           <div>
             <ul id='nav'>{navArr}</ul>
             <Route exact path='/' render={props => <Main backend={this.props.backend}/>}/>
-            <Route path='/addtask' component={TaskForm} />
+            <Route path='/addtask' render={props => <TaskForm backend={this.props.backend}/>} />
             <Route
               path='/user'
               render={props => <UserTasks parentState={this.props.parentState} />}
