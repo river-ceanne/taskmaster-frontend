@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './styles/App.css';
+/* eslint-disable import/first */
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from 'react';
+require('dotenv').config();
+import Nav from './nav.js';
+import Main from './main.js';
+import Header from './header.js';
+
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      backend: 'http://taskmaster-env.csiiybveap.us-east-1.elasticbeanstalk.com/'
+    };
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+
+        <Header />
+      <div>
+        <Nav backend={this.state.backend}/>
+      </div>
+
+
+      </React.Fragment>
+    );
+  }
+}//end of <App>
 
 export default App;

@@ -1,0 +1,45 @@
+header {
+  background: $pink;
+  font-size: 1.5vw;
+  text-align: center;
+  padding: $gutter_std;
+  margin-bottom: $margin-bottom-header;
+
+  a {
+      color: $white;
+  }
+}
+
+form {
+  width: 40vw;; 
+  margin: 0 auto;
+}
+
+input {
+  // margin-bottom: 1vw;
+  display: inline;
+}
+
+li{
+  padding: 1vw;
+}
+
+#task-form {
+  padding: 5vw;
+  display: block;
+}
+
+#nav li {
+  float: left;
+
+  form {
+    display: inline;
+  }
+
+}
+
+#alltasks {
+
+  display: block;
+  padding-top: 5vw;
+}
