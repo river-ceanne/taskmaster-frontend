@@ -10,12 +10,6 @@ header {
   }
 }
 
-footer {
-  background: $black;
-  color: $white;
-  padding: $gutter_std;
-}
-
 form {
   width: 40vw;; 
   margin: 0 auto;
@@ -28,6 +22,11 @@ input {
 
 li{
   padding: 1vw;
+}
+
+#task-form {
+  padding: 5vw;
+  display: block;
 }
 
 #nav li {

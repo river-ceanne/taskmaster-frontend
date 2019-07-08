@@ -1,5 +1,8 @@
+/* eslint-disable import/first */
+
 import React from 'react';
 import superagent from 'superagent';
+import { request } from 'http';
 
 export default class Tasks extends React.Component {
   constructor(props) {
@@ -10,13 +13,17 @@ export default class Tasks extends React.Component {
     };
   }
 
-  setTasks = async event => {
+  setTasks = async () => {
     let tasksData = await superagent.get(
-      `http://taskmaster-env.csiiybveap.us-east-1.elasticbeanstalk.com/`
-    );
+      `${this.props.backend}`
+    ) 
+    .withCredentials()
+    .catch(err => console.log('Error on get is: ', err));
+    if (tasksData !== undefined) {
+      this.setState({ tasks: tasksData.body });
+      console.log('--- TASK DATA --- ' + tasksData);
+    }
 
-    console.log('--- TASK DATA --- ' + tasksData);
-    this.setState({ tasks: tasksData.body });
   };
 
   componentDidMount() {
@@ -31,20 +38,19 @@ export default class Tasks extends React.Component {
 
   render() {
     return (
+
       <section id='alltasks' className='alltasks-container'>
 
-
-        {/* <ul id='alltaskslist'>
-          <h2 id='tasksTitle'>Tasks</h2>
+      <h2 id='tasksTitle'>Tasks</h2>
+        <ul id='alltaskslist'>
           {
-            this.state.tasks.map((val, idx) => {
+            this.state.tasks.map((val, i) => {
             // let publishedAt = new Date(val.publishedAt).toDateString();
             return (
               <>
-                <li key={idx}>
-                <p>{val.title}</p>
-                  {/* <p>{publishedAt}</p> */}
-                  {/* <div id='taskDiv'>
+                <li key={i}>
+                <p>{val.title}</p> 
+                  <div id='taskDiv'>
                     <p>Task Description: {val.description}</p>
                     <p>Assigned To: {val.assignee}</p>
                     <p>{val.status}</p>
@@ -53,9 +59,9 @@ export default class Tasks extends React.Component {
                 <hr />
               </>
             );
-          })
+          })//end of map
           }
-        </ul>  */}
+        </ul>  
 
 
       </section>

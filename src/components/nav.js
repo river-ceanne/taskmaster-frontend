@@ -23,7 +23,7 @@ export default class Nav extends React.Component {
 
     navArr.push(
       <li key={1}>
-        <a href={'/main'}>Home</a>
+        <a href={'/'}>Home</a>
       </li>
     );
     
@@ -49,8 +49,7 @@ export default class Nav extends React.Component {
         <Router>
           <div>
             <ul id='nav'>{navArr}</ul>
-            <Route exact path='/' component={Main} />
-            <Route path='/main' component={Main} />
+            <Route exact path='/' render={props => <Main backend={this.props.backend}/>}/>
             <Route path='/addtask' component={TaskForm} />
             <Route
               path='/user'

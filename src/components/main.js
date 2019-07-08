@@ -7,7 +7,7 @@ export default class Main extends React.Component {
     return (
       <>
         <div id='main'>
-          <Tasks />
+          <Tasks backend={this.props.backend}/>
         </div>
       </>
     );

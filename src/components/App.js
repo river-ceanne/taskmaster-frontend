@@ -8,6 +8,12 @@ import Header from './header.js';
 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      backend: 'http://taskmaster-env.csiiybveap.us-east-1.elasticbeanstalk.com/'
+    };
+  }
 
   render() {
     return (
@@ -15,11 +21,9 @@ class App extends React.Component {
 
         <Header />
       <div>
-        <Nav />
+        <Nav backend={this.state.backend}/>
       </div>
-      <div>
-        <Main />
-      </div>
+
 
       </React.Fragment>
     );

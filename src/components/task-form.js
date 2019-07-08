@@ -16,7 +16,11 @@ export default class TaskForm extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    let query = this.state.search_query;
+    // let query = this.state.search_query;
+
+    // let result = await superagent
+    //     .post(`${___API_URL____}/user`)
+    //     .query({ username: this.state.user.name });
 
     // let weatherData = await superagent.get(`${process.env.BACKEND_URL}/weather`).query({data : locationData.body});
     // let yelpData = await superagent.get(`${__API_URL__}/yelp`).query({data : locationData.body});
@@ -26,9 +30,12 @@ export default class TaskForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input onChange={this.handleSearchKeyword} />
-        <button onClick={this.handleSubmit}>Create Task</button>
+      <form id="task-form" onSubmit={this.handleSubmit}>
+        <p>Title: <input onChange={this.handleSearchKeyword} /></p>
+        <p>Description: <input onChange={this.handleSearchKeyword} /></p>
+        <p>Assignee: <input onChange={this.handleSearchKeyword} /></p>
+
+        <p><input type="submit" value="Create Task"/></p>
       </form>
     );
   }
